@@ -8,6 +8,7 @@
 \usepackage{float}
 \usepackage{multirow}
 \usepackage{adjustbox}
+\usepackage{hyperref}
 
 
 \title{Procedural world generation and the challenges of rendering in non-Euclidean spaces}
@@ -42,9 +43,9 @@ The objective of this thesis is to create a small video game incorporating both 
 \end{table}
 
 \section{Vocabulary} % A.B.
-\textbf{Hyperbolic geometry} -- geometry obtained by replacing Euclid's parallel postulate with the following axiom: "For any given line $R$ and point $P$ not on $R$, in the plane containing both line $R$ and point $P$ there are at least two distinct lines through $P$ that do not intersect $R$." \\
-\textbf{Elliptic geometry} -- geometry obtained by replacing Euclid's parallel postulate with the following axiom: "Through any point in the plane, there exist no lines parallel to a given line."\\
-\textbf{Procedural world generation} -- a technique that allows for creating content (commonly terrain) in a video game, animated movie etc. in an automated manner, that is using an algorithm rather than using manually crafted assets.\\
+\textbf{Hyperbolic geometry} -- geometry obtained by replacing Euclid's parallel postulate with the following axiom: "For any infinite straight line $L$ and any point $P$ not on it, there are many other infinitely extending straight lines that pass through $P$ and which do not intersect $L$."\cite{Hyperbolic-Wolfram} \\
+\textbf{Elliptic geometry} -- geometry obtained by replacing Euclid's parallel postulate with the following axiom: "Through any point in the plane, there exist no lines parallel to a given line."\cite{Elliptic-Wolfram} \\
+\textbf{Procedural world generation} -- a technique that allows for creating content (commonly terrain) in a video game, animated movie etc. in an automated manner, that is using an algorithm instead of using manually crafted assets.\\
 \textbf{NPC} -- non-player character.\\
 \textbf{FPS} -- frames per second.\\
 \textbf{GB} -- gigabyte.\\
@@ -55,8 +56,9 @@ The objective of this thesis is to create a small video game incorporating both 
 
 \subsection{Executive summary}
 
-The video game is written in C\#.
-The two main libraries used in the development are OpenTK (used for rendering) and BepuPhysics (as the physics engine).
+The video game is written in C\# and targets .NET 7 on Windows.
+The two main libraries used in the development are OpenTK\footnote{OpenTK (\url{https://github.com/opentk/opentk}) is a C\# wrapper for OpenGL.} (used for rendering)
+and BepuPhysics\footnote{Highly performant\cite{BepuPhysics} physics simulation library, available at \url{https://github.com/bepu/bepuphysics2}} (as the physics engine).
 Models used in the game were created in Blender.
 Techniques of rendering in non-Euclidean spaces are based on a paper by Szirmay and Kalos.
 Terrain generation was implemented using the marching cubes algorithm,
@@ -67,36 +69,35 @@ where the underlying scalar field was generated using Perlin noise.
 \begin{table}[H]
     \begin{tabular}{p{0.4\linewidth}|p{0.4\linewidth}|p{0.1\linewidth}}
         \hline
-        \textbf{As a player I want to}                            & \textbf{So that}                                                   & \textbf{Flags} \\ \hline
-        Start a game in Euclidean space                           & I can explore Euclidean spaces                                     & Must           \\
-        Start a game in hyperbolic space                          & I can explore hyperbolic spaces                                    & Must           \\
-        Start a game in spherical space                           & I can explore spherical space                                      & Must           \\
-        Have gravity in the game                                  & I have Earth-like experience                                       & Must           \\
-        Can collide with other objects in the game                & I can interact with other objects                                  & Must           \\
-        Be able to move around                                    & I can explore the world                                            & Must           \\
-        Be able to jump                                           & I can jump                                                         & Must           \\
-        Be able to shoot projectiles                              & I can see how things move in non-Euclidean spaces                  & Must           \\
-        Have a limited number of projectiles in the inventory     & The game is more realistic                                         & Must           \\
-        Be able to interact with NPCs                             & So that there is more to do in the game                            & Should         \\
-        Have NPCs move around                                     & The world looks more rich                                          & Must           \\
-        Edit the terrain                                          & I can view any structure in different spaces                       & Must           \\
-        See the marker of the terrain editor                      & I can decide where the terrain modification is going to take place & Must           \\
-        Have different terrain generated every time I load a game & I can explore different terrains                                   & Must           \\
-        Have light sources that illuminate other objects          & I can see what lighting looks like in different spaces             & Must           \\
-        See a night/day cycle                                     & I can compare the world during the day and the night               & Should         \\
-        Have a vehicle I can enter                                & Move around faster                                                 & Must           \\
-        Have a vehicle with suspension springs                    & I can drive around comfortably                                     & Must           \\
-        Have a vehicle that has two top velocities                & I can drive faster if I get bored                                  & Must           \\
-        Have models for the player and NPCs                       & Characters look good                                               & Must           \\
-        Have model for the vehicle                                & Vehicle looks good                                                 & Must           \\
-        Have an inventory                                         & I can manage different items                                       & Must           \\
-        Have objects cast shadows                                 & I can explore what shadows look like in different spaces           & Should         \\
-        Have a way to save/load a game                            & Be able to store interesting worlds                                & Must           \\
-        Be able to save a game                                    & I can save interesting worlds                                      & Must           \\
-        Be able to load a game                                    & I can revisit interesting worlds                                   & Must           \\
-        Have a CLI                                                & I can manage my saves and other game options                       & Must           \\
-        Have a \texttt{help} option in the CLI                    & I know what commands are available and what they do                & Must           \\
-        Have GUI                                                  & I can manage my saves easily                                       & Should         \\ \hline
+        \textbf{As a player I want to}                             & \textbf{So that}                                                   & \textbf{Flags} \\ \hline
+        Start a game in Euclidean space                            & I can explore Euclidean spaces                                     & Must           \\
+        Start a game in hyperbolic space                           & I can explore hyperbolic spaces                                    & Must           \\
+        Start a game in spherical space                            & I can explore spherical space                                      & Must           \\
+        Have gravity in the game                                   & I have Earth-like experience                                       & Must           \\
+        Can collide with other objects in the game                 & I can interact with other objects                                  & Must           \\
+        Be able to move around                                     & I can explore the world                                            & Must           \\
+        Be able to jump                                            & I can jump                                                         & Must           \\
+        Be able to shoot projectiles                               & I can see how things move in non-Euclidean spaces                  & Must           \\
+        Have a limited number of projectiles in the inventory      & The game is more realistic                                         & Must           \\
+        Be able to interact with NPCs                              & So that there is more to do in the game                            & Should         \\
+        Have NPCs move around                                      & The world looks richer                                             & Must           \\
+        Edit the terrain                                           & I can view any structure in different spaces                       & Must           \\
+        See the marker of the terrain editor                       & I can decide where the terrain modification is going to take place & Must           \\
+        Have different terrains generated every time I load a game & I can explore different terrains                                   & Must           \\
+        Have light sources that illuminate other objects           & I can see what lighting looks like in different spaces             & Must           \\
+        See a night/day cycle                                      & I can compare the world during the day and the night               & Should         \\
+        Have a vehicle I can enter                                 & I can move explore the world faster                                & Must           \\
+        Have a vehicle with suspension springs                     & I can drive around comfortably                                     & Must           \\
+        Have a vehicle that has two top velocities                 & I can drive faster if I get bored                                  & Must           \\
+        Have models for the player and NPCs                        & Characters look good                                               & Must           \\
+        Have model for the vehicle                                 & Vehicle looks good                                                 & Must           \\
+        Have an inventory                                          & I can manage different items                                       & Must           \\
+        Have objects cast shadows                                  & I can explore what shadows look like in different spaces           & Should         \\
+        Be able to save a game                                     & I can save interesting worlds                                      & Must           \\
+        Be able to load a game                                     & I can revisit interesting worlds                                   & Must           \\
+        Have a CLI                                                 & I can manage my saves and other game options                       & Must           \\
+        Have a \texttt{help} option in the CLI                     & I know what commands are available and what they do                & Must           \\
+        Have GUI                                                   & I can manage my saves easily                                       & Should         \\ \hline
     \end{tabular}
     \caption{Player functional requirements}
 \end{table}
@@ -167,7 +168,7 @@ where the underlying scalar field was generated using Perlin noise.
                       &
         \begin{itemize}
             \itemsep0em
-            \item Project developed with best practices in mind, resulting in easily extensible code.
+            \item Project is developed with best practices in mind, resulting in easily extensible code.
             \item Project employs the techniques of object-oriented programming to make it easier to manage state by exposing simple, well-defined interfaces.
             \item Project is well documented, making it easier to understand the code base.
         \end{itemize}
@@ -185,7 +186,7 @@ where the underlying scalar field was generated using Perlin noise.
                             \item Proposed methods of rendering non-Euclidean geometries could be used in other projects
                         \end{itemize}                           \\  \hline
     \end{tabular}
-
+    \caption{SWOT analysis}
 \end{table}
 
 \newpage
