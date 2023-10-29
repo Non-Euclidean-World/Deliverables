@@ -1,9 +1,19 @@
 \subsection{Executive summary}
 
-The video game is written in C\# and targets .NET 7 on Windows.
-The two main libraries used in the development are OpenTK\footnote{OpenTK (\url{https://github.com/opentk/opentk}) is a C\# wrapper for OpenGL.} (used for rendering)
-and BepuPhysics\footnote{Highly performant\cite{BepuPhysics} physics simulation library, available at \url{https://github.com/bepu/bepuphysics2}} (as the physics engine).
-Models used in the game were created in Blender.
-Techniques of rendering in non-Euclidean spaces are based on a paper by Szirmay and Kalos.
-Terrain generation was implemented using the marching cubes algorithm,
-where the underlying scalar field was generated using Perlin noise.
+The video game can be started in one of three modes:
+\begin{enumerate}
+    \item Euclidean geometry
+    \item spherical geometry,
+    \item hyperbolic geometry.
+\end{enumerate}
+The last two modes will allow visualizing what living in a 3D non-Euclidean space would look like.
+In the video game, the player will be able to explore a procedurally generated world and interact with it by modifying the terrain (building new structures, digging tunnels, etc.).
+In the case of Euclidean and hyperbolic geometry modes, the world will be infinite and generated on the fly.
+% The 'fight against' stuff in the next sentence wasn't discussed yet, so feel free to give your opinion. But I think we could do this.
+The world will also be inhabited by other creatures that the player will have to fight against by, for example, shooting a gun.
+Showing the motion of the projectiles will also provide an opportunity to show that in non-Euclidean geometries they appear to move along curved paths.
+To make exploring a vast environment offered in modes 1. and 3. easier, the player will find a vehicle that they can get into and drive around in.
+
+
+
+
