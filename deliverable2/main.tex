@@ -1,0 +1,43 @@
+\documentclass[12pt]{article}
+
+\usepackage{biblatex}
+\addbibresource{references.bib}
+
+\usepackage{graphicx}
+\usepackage[a4paper, margin=0.8in]{geometry}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{hyperref}
+
+
+\title{Procedural world generation and the challenges of rendering in non-Euclidean spaces \\ \large System Architecture}
+\author{Aleksy Bałaziński \and Karol Denst}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\input{sections/system_architecture.tex}
+
+\input{sections/modules_design.tex}
+
+\input{sections/communication.tex}
+
+\input{sections/main_components.tex}
+
+\input{sections/user_interface.tex}
+
+\input{sections/external_interfaces.tex}
+
+\input{sections/technology.tex}
+
+\newpage
+\printbibliography
+
+\end{document}
