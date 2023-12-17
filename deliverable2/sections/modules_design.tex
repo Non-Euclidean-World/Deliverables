@@ -4,7 +4,7 @@
 % layers
 
 
-The \textit{Hyper} video game is a relatively big project (it comprises around 160 classes), so naturally we have to contain the discussion to only the most important parts of the system.
+The \textit{Hyper} video game is a relatively big project (it comprises around 260 classes), so naturally we have to contain the discussion to only the most important parts of the system.
 Conceptually, there are four different "areas" spanned by the project:
 \begin{enumerate}
     \item game objects management,
@@ -50,17 +50,19 @@ This part of the system is described in more detail in \ref{chunk_generator}.
 
 \subsection{Rendering}
 Every game object exposes a \texttt{Render()} method.
-The \texttt{Render} methods' signatures differ slightly across different game objects, but they usually take camera position, shader and curve as arguments.
-At the time of writing, there are three shaders available for 3D rendering:
+The \texttt{Render} methods' signatures differ slightly across different game objects, but they usually take camera position, shader and space curvature as arguments.
+At the time of writing, there are four shaders available for 3D rendering:
 \begin{enumerate}
     \item light source shader,
     \item model shader,
-    \item object shader.
+    \item object shader,
+    \item skybox shader.
 \end{enumerate}
 Model shader is used for rendering animated models, whereas light source and object shaders are used for rendering "static" bodies.
 The light source shader is extremely basic: it doesn't take into account other light sources and colors the body uniformly.
 The \texttt{Render} method typically interacts directly with the OpenGL interface, i.e. sets up the uniforms, binds VAOs and makes a draw call.
 In the case of 2D rendering, \texttt{HudShader} class is used.
+The skybox shader is used for rendering the \textit{skybox} i.e. a background used for the scene.
 
 \subsection{User interface}
 The inner workings of the UI are described in \ref{sprite_renderer}.
