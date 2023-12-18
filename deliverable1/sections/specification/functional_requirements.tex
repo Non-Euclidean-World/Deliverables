@@ -1,4 +1,6 @@
 \subsection{Functional requirements}
+The functional requirements are described using use cases.
+The functional requirements are listed in \autoref*{tab:functional_requirements}.
 
 \begin{table}[H]
     \begin{tabular}{p{0.4\linewidth}|p{0.4\linewidth}|p{0.1\linewidth}}
@@ -8,13 +10,14 @@
         Start a game in hyperbolic space                           & I can explore hyperbolic spaces                                    & Must           \\
         Start a game in spherical space                            & I can explore spherical space                                      & Must           \\
         Have gravity in the game                                   & I have Earth-like experience                                       & Must           \\
-        Can collide with other objects in the game                 & I can interact with other objects                                  & Must           \\
+        Be able to collide with other objects in the game          & I can interact with other objects                                  & Must           \\
         Be able to move around                                     & I can explore the world                                            & Must           \\
-        Be able to jump                                            & I can jump                                                         & Must           \\
+        Be able to jump                                            & Moving around is easier                                            & Must           \\
         Be able to shoot projectiles                               & I can see how things move in non-Euclidean spaces                  & Must           \\
         Have a limited number of projectiles in the inventory      & The game is more realistic                                         & Must           \\
         Be able to interact with NPCs                              & So that there is more to do in the game                            & Should         \\
         Have NPCs move around                                      & The world looks richer                                             & Must           \\
+        Have NPCs shoot projectiles                                & The game is more interesting                                       & Must           \\
         Edit the terrain                                           & I can view any structure in different spaces                       & Must           \\
         See the marker of the terrain editor                       & I can decide where the terrain modification is going to take place & Must           \\
         Have different terrains generated every time I load a game & I can explore different terrains                                   & Must           \\
@@ -22,16 +25,15 @@
         See a night/day cycle                                      & I can compare the world during the day and the night               & Should         \\
         Have a vehicle I can enter                                 & I can move explore the world faster                                & Must           \\
         Have a vehicle with suspension springs                     & I can drive around comfortably                                     & Must           \\
-        Have a vehicle that has two top velocities                 & I can drive faster if I get bored                                  & Must           \\
+        Have a vehicle that has two top velocities                 & I can travel even faster                                           & Must           \\
         Have models for the player and NPCs                        & Characters look good                                               & Must           \\
         Have model for the vehicle                                 & Vehicle looks good                                                 & Must           \\
         Have an inventory                                          & I can manage different items                                       & Must           \\
-        Have objects cast shadows                                  & I can explore what shadows look like in different spaces           & Should         \\
         Be able to save a game                                     & I can save interesting worlds                                      & Must           \\
+        Be able to delete a save                                   & I can remove old saves                                             & Must           \\
         Be able to load a game                                     & I can revisit interesting worlds                                   & Must           \\
-        Have a CLI                                                 & I can manage my saves and other game options                       & Must           \\
-        Have a \texttt{help} option in the CLI                     & I know what commands are available and what they do                & Must           \\
-        Have GUI                                                   & I can manage my saves easily                                       & Should         \\ \hline
+        Have GUI                                                   & I can manage my saves easily                                       & Must         \\ \hline
     \end{tabular}
-    \caption{Player functional requirements}
+    \caption{Functional requirements}
+    \label{tab:functional_requirements}
 \end{table}
